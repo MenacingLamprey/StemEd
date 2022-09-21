@@ -1,0 +1,23 @@
+import { Request, Response} from "express";
+import { Topic } from '../models/Topic'
+import { ITopic } from '../models/types'
+
+export const getTopic =  async (req : Request, res : Response) => {
+  try {
+    const title = req?.params?.title;
+    const topic = await Topic.find({ title });
+    res.status(200).send(topic)
+  } catch (e) {
+    res.status(500).send({error :e})
+  }
+}
+
+export const makeTopic =  async (req : Request, res : Response) => {
+  try {
+    const newTopic : ITopic = req.body;
+    const topic : ITopic = await Topic.create(newTopic);
+    res.status(201).send(topic)
+  } catch (e) {
+    res.status(500).send({error :e})
+  }
+}
