@@ -4,8 +4,8 @@ import { ILesson } from '../models/types'
 
 export const getLesson =  async (req : Request, res : Response) => {
   try {
-    const id = req?.params?.id;
-    const lesson = await Lesson.findById(id);
+    const title = req?.params?.title;
+    const lesson = await Lesson.findOne({title}).populate('exercises');
     res.status(200).send(lesson)
   } catch (e) {
     res.status(500).send({error :e})

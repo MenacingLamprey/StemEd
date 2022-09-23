@@ -5,7 +5,11 @@ import { ITopic } from '../models/types'
 export const getTopic =  async (req : Request, res : Response) => {
   try {
     const title = req?.params?.title;
-    const topic = await Topic.find({ title });
+
+    const topic = await Topic.findOne({ title }).
+    populate('lessons').
+    populate('topicExam')
+
     res.status(200).send(topic)
   } catch (e) {
     res.status(500).send({error :e})
@@ -20,4 +24,9 @@ export const makeTopic =  async (req : Request, res : Response) => {
   } catch (e) {
     res.status(500).send({error :e})
   }
+}
+
+export const getSubjectTopics = async (req : Request, res : Response) => {
+  
+  return null;
 }

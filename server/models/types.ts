@@ -15,6 +15,7 @@ export interface ILesson {
 
 export interface ITopic {
   title: String;
+  topicDescription : String,
   lessons : ILesson[];
   topicExam? : IExercise[];
   _id? : String;

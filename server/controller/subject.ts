@@ -22,3 +22,12 @@ export const makeSubject =  async (req : Request, res : Response) => {
     res.status(500).send({error :e})
   }
 }
+
+export const getAllSubjects =  async (req : Request, res : Response) => {
+  try {
+    const subjects : ISubject[] = await Subject.find().populate({path : 'topics'})
+    res.status(200).send(subjects)
+  } catch (e) {
+    res.status(500).send({error :e})
+  }
+}
