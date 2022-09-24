@@ -1,7 +1,9 @@
 import { Request, Response} from "express";
-import { Exercise } from '../models/Exercise'
+import { Model } from "mongoose";
+import { Exercise} from '../models/Exercise'
+import { ExerciseFormat } from '../models/ExerciseFormat'
 import { Lesson } from "../models/Lesson";
-import { IExercise, ILesson} from '../models/types'
+import { IExercise, IExerciseFormat, ILesson} from '../types'
 
 export const getExercise =  async (req : Request, res : Response) => {
   try {
@@ -31,6 +33,20 @@ export const getExercisebyLesson = async (req:Request, res :Response) => {
       const exercises = lesson.exercises
       res.status(201).send(exercises)
     }
+  } catch (e) {
+    res.status(500).send({error :e})
+  }
+}
+
+export const getExerciseFormatsbyLesson = async (req:Request, res :Response) => {
+  try {
+    const lessonTitle = req.params.lessonName
+    const lesson : ILesson | null = await Lesson.findOne({ title : lessonTitle }).populate('exerciseformats','')
+
+    if (lesson) {
+      const exerciseformats = lesson.exerciseformats
+      res.status(201).send(exerciseformats)
+    } 
   } catch (e) {
     res.status(500).send({error :e})
   }

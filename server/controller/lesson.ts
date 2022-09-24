@@ -1,6 +1,6 @@
 import { Request, Response} from "express";
 import { Lesson } from '../models/Lesson'
-import { ILesson } from '../models/types'
+import { ILesson } from '../types'
 
 export const getLesson =  async (req : Request, res : Response) => {
   try {

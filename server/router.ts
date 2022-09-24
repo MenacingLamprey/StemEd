@@ -3,7 +3,7 @@ import { Request, Response, Router } from "express";
 import { getLesson, makeLesson } from './controller/lesson'
 import { getTopic, makeTopic, getSubjectTopics } from './controller/topic'
 import { getSubject, getAllSubjects, makeSubject } from './controller/subject'
-import { getExercise, makeExercise, getExercisebyLesson } from './controller/exercise'
+import { getExercise, makeExercise, getExercisebyLesson, getExerciseFormatsbyLesson } from './controller/exercise'
 
 const router = Router();
 
@@ -20,6 +20,7 @@ router.post('/create/subject', makeSubject);
 
 router.get('/exercise/:id', getExercise);
 router.get('/exercises/:lessonName/', getExercisebyLesson)
+router.get('/exerciseFormats/:lessonName/', getExerciseFormatsbyLesson)
 router.post('/create/exercise', makeExercise);
 
 export = router;

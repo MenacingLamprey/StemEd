@@ -1,6 +1,6 @@
 import { Request, Response} from "express";
 import { Subject } from '../models/Subject'
-import { ISubject } from '../models/types'
+import { ISubject } from '../types'
 
 export const getSubject =  async (req : Request, res : Response) => {
   try {

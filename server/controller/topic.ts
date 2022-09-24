@@ -1,6 +1,6 @@
 import { Request, Response} from "express";
 import { Topic } from '../models/Topic'
-import { ITopic } from '../models/types'
+import { ITopic } from '../types'
 
 export const getTopic =  async (req : Request, res : Response) => {
   try {

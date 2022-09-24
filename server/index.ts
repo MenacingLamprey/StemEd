@@ -1,13 +1,23 @@
+import fs from 'fs'
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose'
-const cors = require('cors')
+import { join } from 'path';
 
+const cors = require('cors')
 import router from './router'
+
+
+const models = join(__dirname, './models');
 
 dotenv.config({
   path: '.env'
 });
+
+fs.readdirSync(models)
+  .filter(file => ~file.search(/^[^.].*\.ts$/))
+  .forEach(file => require(join(models, file)));
+
 
 const PORT = process.env.PORT || 3001;
 const DB_URI = process.env.DB_URI || ''
