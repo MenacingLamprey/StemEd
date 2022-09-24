@@ -1,0 +1,24 @@
+.topic{
+  background-size: cover;
+  text-align: center;
+  height: 90%;
+  width:200px; 
+  border: rgb(122, 122, 122) solid 1px;
+}
+
+#topic-link{
+  text-decoration: none;
+}
+
+.topic-name{
+  color:aliceblue;
+  padding:0;
+  margin:0;
+}
+
+.topic-descript{
+  height: 65%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px;
+}

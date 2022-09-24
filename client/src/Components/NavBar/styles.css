@@ -1,0 +1,19 @@
+#nav-bar{
+  display: flex;
+  justify-content: space-between;
+  height:60px;
+  border-bottom: black solid 1px;
+  background-color:  #1e2468;
+
+  position:fixed;
+  width: 100%;
+}
+
+#link{
+  text-decoration: none;
+  color: black;
+}
+
+#link:hover{
+  font-size: large;
+}

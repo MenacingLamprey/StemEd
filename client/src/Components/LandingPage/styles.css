@@ -1,0 +1,6 @@
+#subject-container{
+  display:flex;
+  flex-direction:column ;
+  background:  linear-gradient(#17023b, #1e2468);
+}
+

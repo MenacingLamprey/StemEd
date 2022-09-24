@@ -1,0 +1,15 @@
+#App{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#nav-bar{
+  position:absolute;
+  margin-top:0;
+}
+
+#underlay{
+  height:61px;
+  margin-top: auto;
+}

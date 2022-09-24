@@ -1,0 +1,30 @@
+#lesson-page{
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#latex{
+  height:50px;
+  font-size: large;
+}
+
+#reg-text{
+  width: max-content;
+}
+
+#practice-box{
+  font-size: x-large;
+  text-align: center;
+  height: 90%;
+  width:200px; 
+}
+
+#practice-link{
+  width: fit-content;
+  text-decoration: none;
+}
+
+#lesson-page {
+  text-align: center;
+}
