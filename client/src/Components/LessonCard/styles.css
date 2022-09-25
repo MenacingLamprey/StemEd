@@ -1,8 +1,10 @@
 .lesson{
   text-align: center;
-  height: 90%;
+  height: 150px;
   width:200px; 
   border: rgb(122, 122, 122) solid 1px;
+  text-overflow: clip;
+  overflow-x:hidden
 }
 
 #lesson-link{
@@ -10,6 +12,7 @@
 }
 
 .lesson-name{
+  color:black;
   padding:0;
   margin:0;
 }
@@ -19,4 +22,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 14px;
+}
+
+#summary{
+  text-overflow: clip;
+  overflow-x:hidden
 }

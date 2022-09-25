@@ -9,8 +9,11 @@ interface IProps {
 
 export const TopicCard : FunctionComponent<IProps> = ({ topic }) => {
   console.log(topic.background)
-  return (<div className='topic' style={{ backgroundImage: `url(${topic.background})`  }}>
-  <Link id ='topic-link' to={`/topic/${topic.title}`}><h4 className = 'topic-name'>{topic.title}</h4></Link>
-    {/* <p className='topic-descript'>{topic.topicDescription}</p> */}
+  return (<div> 
+    <h4 id = 'title'>{topic.title}</h4>
+    <Link id ='topic-link' to={`/topic/${topic.title}`}>
+      <div className='topic' style={{ backgroundImage: `url(${topic.background})`  }}/>
+    </Link>
+      {/* <p className='topic-descript'>{topic.topicDescription}</p> */}
   </div>)
 }

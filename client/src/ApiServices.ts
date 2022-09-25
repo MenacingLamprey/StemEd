@@ -1,6 +1,6 @@
-import { IExercise, IExerciseFormat, ILesson, ISubject, ITopic } from "./ApiResponseTypes"
+import { IExercise, IExerciseFormat, ILesson, ISubject, ITopic } from './ApiResponseTypes'
 
-const baseURL = "http://localhost:3001"
+const baseURL = 'http://localhost:3001'
 
 export const getSubjects = async () : Promise<ISubject[]> => {
   const response = await fetch(`${baseURL}/subjects`)

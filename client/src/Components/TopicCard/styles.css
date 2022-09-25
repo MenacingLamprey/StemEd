@@ -6,6 +6,11 @@
   border: rgb(122, 122, 122) solid 1px;
 }
 
+.topic:hover{
+  height: 95%;
+  width:210px;;
+}
+
 #topic-link{
   text-decoration: none;
 }
@@ -14,6 +19,11 @@
   color:aliceblue;
   padding:0;
   margin:0;
+}
+
+#title{
+  padding:0;
+  margin: 0;
 }
 
 .topic-descript{

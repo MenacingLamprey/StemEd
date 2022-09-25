@@ -1,16 +1,18 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, FormEventHandler, FormEvent } from "react";
-
+import {MathJax} from 'better-react-mathjax'
 import { getExercisesByLesson, getExerciseFormatsByLesson } from "../../ApiServices";
 import { IExercise, IExerciseFormat } from "../../ApiResponseTypes"
 import { formatParser } from "./formatParser";
 
+import './styles.css'
+
 export const ExercisePage  = () => {
-  const [index,setIndex ] = useState(0)
-  const [exercises, setExercises] = useState([] as IExercise[])
-  const [exerciseFormats, setFormats] = useState([] as IExerciseFormat[])
-  const [answers ,setAnswer] = useState([]as string[])
-  const [answered,setAnswered] = useState(false)
+  const [index,setIndex ] = useState(0);
+  const [exercises, setExercises] = useState([] as IExercise[]);
+  const [exerciseFormats, setFormats] = useState([] as IExerciseFormat[]);
+  const [answers ,setAnswer] = useState([]as string[]);
+  const [answered,setAnswered] = useState(false);
 
   const { lesson } = useParams();
   const navigate = useNavigate();
@@ -52,7 +54,7 @@ export const ExercisePage  = () => {
     return (<div>
     {exercises[index].answers.map((answer,index) => <input 
       type="text" 
-      id="answer-input"
+      className="answer-input"
       value={answers}
       placeholder=""
       onChange={(e) => { 
@@ -63,16 +65,29 @@ export const ExercisePage  = () => {
     </div>)
   }
 
-  return (<div> 
+  const displayAnswerLaTex = () => {
+    const valid = (answer : string) => answer.slice(-1) !== '^'
+    return (<div>
+      {answers.map(answer => 
+      <MathJax>{`\\(${valid(answer) ? answer: answer.slice(0,-1)}\\)`}</MathJax>)}
+      </div>)
+}
+
+  return (<div id ='exercise-container'> 
     {!exercises.length ? <div>Loading</div> :
       exercises[index] ? 
-      <div><h4>{exercises[index].question}</h4>
-      <form id = 'answer-form' onSubmit={e => onSubmit(e) }>
-        {generateInputs()}
-        <button type ='submit'> submit </button>
-      </form>
-      </div> : (<div>All Exercises for This Lesson Complete
-          <button onClick={() => navigate(-2)}>Back to Topic</button>
-        </div>)}
+      <div id = 'exercise'>
+        <h4 id = 'question'><MathJax>{exercises[index].question}</MathJax></h4>
+        <div>
+        {displayAnswerLaTex()}
+        </div>
+        <form id = 'answer-form' onSubmit={e => onSubmit(e) }>
+          {generateInputs()}
+          <button type ='submit'> submit </button>
+        </form>
+      </div> : 
+      (<div>All Exercises for This Lesson Complete
+        <button onClick={() => navigate(-2)}>Back to Topic</button>
+      </div>)}
     </div> )
 }

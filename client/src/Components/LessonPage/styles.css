@@ -1,7 +1,12 @@
 #lesson-page{
+  text-align: center;
   display : flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  align-self: center;
+  background: linear-gradient(gray, lightgray);
+  min-height: 100vh;
+  width: 80%;
 }
 
 #latex{
@@ -21,10 +26,7 @@
 }
 
 #practice-link{
+  align-self: center;
   width: fit-content;
   text-decoration: none;
-}
-
-#lesson-page {
-  text-align: center;
 }

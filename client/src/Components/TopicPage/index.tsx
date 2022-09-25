@@ -25,11 +25,14 @@ export const TopicPage= () => {
     }
   } 
 
-  return (<div>
+  return (<div id = 'topic-page'>
     <h1>{topic.title}</h1>
-    <h4>{topic.topicDescription}</h4>
+    <h3>{topic.topicDescription}</h3>
     <div id = 'lesson-container'>
-      {topic.lessons.map(lesson => <LessonCard lesson ={lesson} />)}
+      <h3 id ='lesson-header'>Lessons</h3>
+      <div id = 'lessons'>
+        {topic.lessons.map(lesson => <LessonCard lesson ={lesson} />)}
+      </div>
     </div>
   </div>)
 }

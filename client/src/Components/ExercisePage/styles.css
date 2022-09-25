@@ -1,0 +1,28 @@
+#exercise-container{
+  display:flex;
+  background: linear-gradient(gray, lightgray);
+  justify-content: center;
+  min-height: 90vh;
+}
+
+#exercise{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: fit-content;
+  justify-content: space-evenly;
+  min-height: 80vh;
+  background:  linear-gradient( #1e2468, lightgray);
+}
+
+#answer-form{
+  align-self: flex-start;
+  display: flex;
+}
+
+.answer-input{
+  align-self: flex-start;
+  height: 20px;
+}

@@ -1,12 +1,8 @@
-#App{
+.App{
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
-}
-
-#nav-bar{
-  position:absolute;
-  margin-top:0;
+  align-items: center;
 }
 
 #underlay{
