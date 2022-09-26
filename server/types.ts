@@ -41,3 +41,39 @@ export interface ISubject {
   topics : ITopic[];
   _id? : string
 }
+
+export interface IUser {
+  _id :string;
+  email: string;
+  password: string;
+  username: string;
+  completedLessons :ILesson[]
+}
+
+export interface Session {
+  id: number;
+  dateCreated: number;
+  username: string;
+  issued: number;
+  expires: number;
+}
+
+export interface EncodeResult {
+  token: string,
+  expires: number,
+  issued: number
+}
+
+export type DecodeResult =
+| {
+    type: "valid";
+    session: Session;
+  }
+| {
+    type: "integrity-error";
+  }
+| {
+    type: "invalid-token";
+  };
+
+export type ExpirationStatus = "expired" | "active" | "grace";

@@ -4,7 +4,7 @@ import { getLesson, makeLesson } from './controller/lesson'
 import { getTopic, makeTopic, getSubjectTopics } from './controller/topic'
 import { getSubject, getAllSubjects, makeSubject } from './controller/subject'
 import { getExercise, makeExercise, getExercisebyLesson, getExerciseFormatsbyLesson } from './controller/exercise'
-
+import { authMiddleware } from './middleware/auth';
 const router = Router();
 
 router.get('/lesson/:title', getLesson);
