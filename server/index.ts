@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose'
 import { join } from 'path';
+
 const cors = require('cors')
 
 const corsConfig = {
@@ -18,7 +19,7 @@ dotenv.config({
   path: '.env'
 });
 
-fs.readdirSync(models) //makes sure all
+fs.readdirSync(models) //makes sure all models are syncd
   .filter(file => ~file.search(/^[^.].*\.ts$/))
   .forEach(file => require(join(models, file)));
 

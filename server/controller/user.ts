@@ -2,17 +2,17 @@ import { Request, Response } from "express";
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const User = require('./../models/user');
+import { User }  from './../models/User';
 import { IUser } from "../types";
 const SECRET_KEY = process.env.SECRET_KEY || 'A key, which is secret';;
 
-export interface RequestWithUser extends Request {
-  user: IUser
- }
+interface RequestWithUser extends Request {
+  user?: IUser
+}
 
-const create = async (req :Request, res :Response) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email: email });
+export const create = async (req :Request, res :Response) => {
+  const { username, password ,completedLessons } = req.body;
+  const user = await User.findOne({ username });
   if (user)
     return res
       .status(409)
@@ -21,8 +21,7 @@ const create = async (req :Request, res :Response) => {
     if (password === '') throw new Error();
     const hash = await bcrypt.hash(password, 10);
     const newUser = new User({
-      ...req.body,
-      password: hash,
+      username, password, completedLessons
     });
     const { _id } = await newUser.save();
     const accessToken = jwt.sign({ _id }, SECRET_KEY);
@@ -32,14 +31,16 @@ const create = async (req :Request, res :Response) => {
   }
 };
 
-const login = async (req :Request, res :Response) => {
-  const { email, password } = req.body;
+export const login = async (req :Request, res :Response) => {
+  const { username, password } = req.body;
   try {
-    const user = await User.findOne({ email: email });
-    const validatedPass = await bcrypt.compare(password, user.password);
-    if (!validatedPass) throw new Error();
-    const accessToken = jwt.sign({ _id: user._id }, SECRET_KEY);
-    res.status(200).send({ accessToken });
+    const user = await User.findOne({ username });
+    if(user) {
+      const validatedPass = await bcrypt.compare(password, user.password);
+      if (!validatedPass) throw new Error();
+      const accessToken = jwt.sign({ _id: user._id }, SECRET_KEY);
+      res.status(200).send({ accessToken });
+    } else res.status(400).send({message : 'No such User'})
   } catch (error) {
     res
       .status(401)
@@ -47,21 +48,18 @@ const login = async (req :Request, res :Response) => {
   }
 };
 
-const profile = async (req :RequestWithUser, res :Response) => {
+export const profile = async (req :RequestWithUser, res :Response) => {
   try {
-    const { _id, username } = req.user;
-    const user = { _id, username }; //is this enough?
-    res.status(200).send(user);
+    if (req.user){
+      const { _id, username, completedLessons } = req.user;
+      const user = { _id, username, completedLessons }; //is this enough?
+      res.status(200).send(user);
+    }
   } catch (error){
     res.status(404).send({ error, message: 'Resource not found' });
   }
 };
 
-const logout = (req : Request, res :Response) => {
-  // REMOVE-START
-  // delete the token client side upon logout.
-  // you would invalidate the token here.
-  // REMOVE-END
-};
+export const logout = (req : Request, res :Response) => {
 
-module.exports = { create, login, profile, logout };
+};

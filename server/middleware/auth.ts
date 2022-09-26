@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const SECRET_KEY = process.env.SECRET_KEY || 'A key, which is secret';
 
 export interface RequestWithUser extends Request {
-  user: IUser
+  user?: IUser
  }
 
 export const authMiddleware = async (req : RequestWithUser, res :Response, next :Function) => {
@@ -15,7 +15,6 @@ export const authMiddleware = async (req : RequestWithUser, res :Response, next 
   const authHeaders = req.headers['authorization'];
   if (!authHeaders) return res.sendStatus(403);
   const token = authHeaders.split(' ')[1];
-
   try {
     // verify & decode token payload,
     const { _id } = jwt.verify(token, SECRET_KEY);
@@ -23,7 +22,8 @@ export const authMiddleware = async (req : RequestWithUser, res :Response, next 
     const user = await User.findOne({ _id });
     if (!user) return res.sendStatus(401);
     req.user = user;
-    next();
+
+    next(req,res);
   } catch (error) {
     res.sendStatus(401);
   }

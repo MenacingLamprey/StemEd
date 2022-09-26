@@ -46,6 +46,8 @@ export const getExerciseFormatsbyLesson = async (req:Request, res :Response) => 
     if (lesson) {
       const exerciseformats = lesson.exerciseformats
       res.status(201).send(exerciseformats)
+    } else {
+      res.status(404).send({message: 'Lesson Does Not Exist' })
     } 
   } catch (e) {
     res.status(500).send({error :e})
