@@ -21,7 +21,7 @@ export const create = async (req :Request, res :Response) => {
     if (password === '') throw new Error();
     const hash = await bcrypt.hash(password, 10);
     const newUser = new User({
-      username, password, completedLessons
+      username, password : hash, completedLessons
     });
     const { _id } = await newUser.save();
     const accessToken = jwt.sign({ _id }, SECRET_KEY);
@@ -52,7 +52,7 @@ export const profile = async (req :RequestWithUser, res :Response) => {
   try {
     if (req.user){
       const { _id, username, completedLessons } = req.user;
-      const user = { _id, username, completedLessons }; //is this enough?
+      const user = { _id, username, completedLessons };
       res.status(200).send(user);
     }
   } catch (error){
@@ -60,6 +60,15 @@ export const profile = async (req :RequestWithUser, res :Response) => {
   }
 };
 
-export const logout = (req : Request, res :Response) => {
-
-};
+export const addToLessons = async (req :Request, res:Response) => {
+  try {
+    const { id, lesson } = req.body
+    const query = {_id: id};
+    const update = { $addToSet: {completedLessons: lesson}}
+    const options = {upsert: true};
+    const result = await User.findOneAndUpdate(query, update, options)
+    res.status(200).send(result)
+  } catch(e) {
+    return res.status(500).send({message : 'Internal Server Error'})   
+  }
+}

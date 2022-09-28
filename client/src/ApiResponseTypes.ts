@@ -24,6 +24,7 @@ export interface ILesson {
   videoUrls :string[];
   exercises : IExercise[];
   exerciseFormats? : IExerciseFormat[];
+  background :string
 }
 
 export interface ITopic {
@@ -39,4 +40,22 @@ export interface ISubject {
   title : string;
   _id : string;
   topics : ITopic[];
+}
+
+export interface IUser{
+  username :string,
+  password:string,
+  completedLessons: ILesson[]
+}
+
+export interface ILoginUser{
+  username :string,
+  password:string,
+}
+
+export interface IAuth {
+  authenticated : boolean;
+  login : Function;
+  logout :Function;
+  isAuthenticated : Function;
 }

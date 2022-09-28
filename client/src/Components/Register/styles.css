@@ -1,0 +1,13 @@
+#register{
+  background:  linear-gradient(#33018a, #1e2468);
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+#form{
+  margin-top:10px;;
+}

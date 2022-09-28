@@ -1,33 +1,51 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, FormEventHandler, FormEvent } from "react";
 import {MathJax} from 'better-react-mathjax'
-import { getExercisesByLesson, getExerciseFormatsByLesson } from "../../ApiServices";
-import { IExercise, IExerciseFormat } from "../../ApiResponseTypes"
+import { getExercisesByLesson, getExerciseFormatsByLesson, getLesson } from "../../ApiServices";
+import { IExercise, IExerciseFormat, ILesson } from "../../ApiResponseTypes"
 import { formatParser } from "./formatParser";
 
 import './styles.css'
+import { AnswerResult } from "../AnswerResult.tsx";
+
+const initialLesson : ILesson = {title :'', summary:'', videoUrls :[], exercises:[], background :''} 
 
 export const ExercisePage  = () => {
   const [index,setIndex ] = useState(0);
-  const [exercises, setExercises] = useState([] as IExercise[]);
-  const [exerciseFormats, setFormats] = useState([] as IExerciseFormat[]);
-  const [answers ,setAnswer] = useState([]as string[]);
+  const [exercises, setExercises] = useState<IExercise[]>([]);
+  const [answers ,setAnswers] = useState<string[]>([]);
   const [answered,setAnswered] = useState(false);
+  const [correct, setCorrect] = useState(false)
+  const [lessonData, setLesson] = useState<ILesson>(initialLesson);
 
   const { lesson } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
     getExercises();
+    getLessonData();
   },[])
 
+  const getLessonData = async () => {
+    if(lesson){
+      try {
+      const data = await getLesson(lesson)
+      setLesson(data)
+      } catch (e) {
+        return e
+      }
+    }
+  }
+
+  
   const getExercises = async () => {
     if(lesson){
       const data = await getExercisesByLesson(lesson)
       const formats = await getExerciseFormatsByLesson(lesson)
-      const formatedExercises :IExercise[] =[]
-      while(formatedExercises.length <10 && formats.length){
+      const formatedExercises :IExercise[] = []
+
+      while(formatedExercises.length < 3 && formats.length){
         for (const format of formats){ 
-          const [q,a] = (formatParser(formats[0]))
+          const [q,a] = (formatParser(format))
           const newExercise = {question: q, answers: a ,_id:'1'} as IExercise
           formatedExercises.push(newExercise)
         }
@@ -37,16 +55,23 @@ export const ExercisePage  = () => {
   }
 
   const isCorrect = () => {
-    const masterAnswers = exercises[index].answers
-    const numCorrect = answers.filter((answer,index) => answer == masterAnswers[index]).length
-    return numCorrect == masterAnswers.length;
+    if(exercises[index]){
+      const masterAnswers = exercises[index].answers
+      const numCorrect = answers.filter((answer,index) => answer == masterAnswers[index]).length
+      return numCorrect == masterAnswers.length;
+    }
+    return false
   }
 
   const onSubmit = (e :FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setAnswered(true);
     if (isCorrect()) {
       setIndex(index+1)
-      setAnswer([])
+      setCorrect(true)
+      setAnswers([])
+    } else {
+      setCorrect(false)
     }
   }
 
@@ -59,17 +84,21 @@ export const ExercisePage  = () => {
       placeholder=""
       onChange={(e) => { 
         answers[index] = e.target.value
-        setAnswer([...answers])}
+        setAnswers([...answers])}
       }
     />)}
     </div>)
   }
 
   const displayAnswerLaTex = () => {
-    const valid = (answer : string) => answer.slice(-1) !== '^'
+    const valid = (answer : string) => {
+      return (answer.slice(-1) !== '^')
+    }
+
+
     return (<div>
       {answers.map(answer => 
-      <MathJax>{`\\(${valid(answer) ? answer: answer.slice(0,-1)}\\)`}</MathJax>)}
+      <MathJax>{`\\(${valid(answer) ? answer: answer.slice(0,-1)}\\)`}</MathJax>)} {/*render user input in Latex*/}
       </div>)
 }
 
@@ -78,6 +107,7 @@ export const ExercisePage  = () => {
       exercises[index] ? 
       <div id = 'exercise'>
         <h4 id = 'question'><MathJax>{exercises[index].question}</MathJax></h4>
+        <AnswerResult answered = {answered} correct ={correct} completed ={!exercises[index+1]} lesson ={lessonData}/>
         <div>
         {displayAnswerLaTex()}
         </div>
@@ -86,7 +116,7 @@ export const ExercisePage  = () => {
           <button type ='submit'> submit </button>
         </form>
       </div> : 
-      (<div>All Exercises for This Lesson Complete
+      (<div id = 'success'>All Exercises for This Lesson Complete
         <button onClick={() => navigate(-2)}>Back to Topic</button>
       </div>)}
     </div> )

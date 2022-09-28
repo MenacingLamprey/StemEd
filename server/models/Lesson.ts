@@ -6,7 +6,8 @@ const LessonSchema = new Schema({
   summary : { type: String, required: true },
   videoUrls : [{type : String}],
   exercises : [{type : Schema.Types.ObjectId, ref : 'exercise'}],
-  exerciseformats : [{type : Schema.Types.ObjectId, ref : 'exerciseFormat'}]
+  exerciseformats : [{type : Schema.Types.ObjectId, ref : 'exerciseFormat'}],
+  background : String
 });
 
 export const Lesson = model<ILesson>('lesson', LessonSchema);

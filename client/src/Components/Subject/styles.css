@@ -25,8 +25,8 @@
 }
 
 #topics{
+  margin-top: 15px;
   color:aliceblue;
-
   display:flex;
   justify-content: space-around;
   height: 67%;

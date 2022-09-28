@@ -18,3 +18,8 @@
 #link:hover{
   font-size: large;
 }
+
+#navigation{
+  width:100px;
+  display: flex;;
+}

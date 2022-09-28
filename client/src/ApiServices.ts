@@ -26,6 +26,12 @@ export const getLesson = async ( lessonName: string) : Promise<ILesson> => {
   return lesson;
 }
 
+export const getLessonbyId = async ( lessonId: string) : Promise<ILesson> => {
+  const response = await fetch(`${baseURL}/lesson/${lessonId}`)
+  const lesson = (await response.json()) as ILesson
+  return lesson;
+}
+
 export const getExercisesByLesson = async (lessonName: string) : Promise<IExercise[]> =>{
   const response = await fetch(`${baseURL}/exercises/${lessonName}/`)
   const exercises = (await response.json()) as IExercise[]

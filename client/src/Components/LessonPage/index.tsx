@@ -5,13 +5,16 @@ import { Video } from '../Video';
 import { getLesson } from '../../ApiServices'
 import { ILesson } from '../../ApiResponseTypes'
 import { MathJax } from 'better-react-mathjax'
+
 import './styles.css'
 
-const initialLesson: ILesson = { title: '', videoUrls: [], summary: '', exercises: [] }
-export const LessonPage = () => {
-  const [lesson, setLesson] = useState(initialLesson)
+const initialLesson: ILesson = { title: '', videoUrls: [], summary: '', exercises: [],background :'' }
+
+export const LessonPage :FunctionComponent<{auth :boolean}> = ( {auth} ) => {
+  const [lesson, setLesson] = useState<ILesson>(initialLesson)
 
   const { title } = useParams();
+
   useEffect(() => {
     getLessonPage();
   }, [])
@@ -27,9 +30,14 @@ export const LessonPage = () => {
     }
   }
 
+  const parseSummary =(summary :string) => {
+    const splitSummary =  summary.split('<br>')
+    return splitSummary.map(section => <p>{section}</p>)
+  }
+
   return (<div id = 'lesson-page'>
     <h1 id = 'lesson-title'>{lesson.title}</h1>
-    <div><h3><MathJax>{lesson.summary}</MathJax></h3>
+    <div id = 'summary'><h3><MathJax>{parseSummary(lesson.summary)}</MathJax></h3>
     {lesson.videoUrls.map(url => <Video link = {url}/>)}
     </div>
     <Link id ='practice-link' to={`/exercises/${lesson.title}/`}><div id = 'practice-box'>Practice</div></Link>

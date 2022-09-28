@@ -10,7 +10,7 @@ import './styles.css'
 let initialTopic : ITopic ={title :'', topicDescription:'', lessons:[], topicExam :[],background:''}
 
 export const TopicPage= () => {
-  const [topic, setTopic] = useState(initialTopic)
+  const [topic, setTopic] = useState<ITopic>(initialTopic)
 
   const { title } = useParams();
 

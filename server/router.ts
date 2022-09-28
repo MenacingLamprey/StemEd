@@ -1,11 +1,12 @@
 import { Request, Response, Router } from "express";
 
-import { getLesson, makeLesson } from './controller/lesson'
+import { getLesson, makeLesson, getLessonbyId } from './controller/lesson'
 import { getTopic, makeTopic, getSubjectTopics } from './controller/topic'
 import { getSubject, getAllSubjects, makeSubject } from './controller/subject'
 import { getExercise, makeExercise, getExercisebyLesson, getExerciseFormatsbyLesson } from './controller/exercise'
 import { authMiddleware } from './middleware/auth';
-import { create, login, profile, logout } from './controller/user';
+import { create, login, profile, addToLessons } from './controller/user';
+
 
 import { IUser } from "./types";
 
@@ -16,6 +17,7 @@ interface RequestWithUser extends Request {
 const router = Router();
 
 router.get('/lesson/:title', getLesson);
+router.get('/lesson/:id', getLessonbyId);
 router.post('/create/lesson', makeLesson);
 
 router.get('/topic/:title', getTopic);
@@ -34,6 +36,6 @@ router.post('/create/exercise', makeExercise);
 router.post('/register', create);
 router.post('/login', login);
 router.get('/profile', (req,res) => authMiddleware(req as RequestWithUser, res, profile));
-router.post('/logout',(req,res) => authMiddleware(req as RequestWithUser,res,logout));
+router.patch('/addLesson', addToLessons)
 
 export = router;

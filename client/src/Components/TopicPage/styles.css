@@ -9,18 +9,12 @@
   min-height: 100vh;
 }
 
-#lesson-container {
-  display :flex;
-  flex-direction: column;
-}
-
 h3{
   text-align: center;
 }
 
 #lessons{
-  padding: 0;
   width: 100%;
   display :flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }

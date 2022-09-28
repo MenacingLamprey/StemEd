@@ -1,10 +1,23 @@
+#title{
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+#lesson-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left:10px;
+  padding-right:10px;
+}
+
 .lesson{
   text-align: center;
   height: 150px;
   width:200px; 
   border: rgb(122, 122, 122) solid 1px;
-  text-overflow: clip;
-  overflow-x:hidden
+  background-size: cover;
 }
 
 #lesson-link{
@@ -15,16 +28,4 @@
   color:black;
   padding:0;
   margin:0;
-}
-
-.lesson-descript{
-  height: 65%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  font-size: 14px;
-}
-
-#summary{
-  text-overflow: clip;
-  overflow-x:hidden
 }

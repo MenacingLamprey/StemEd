@@ -1,0 +1,12 @@
+#profile-container{
+  background:  linear-gradient(#33018a, #1e2468);
+  min-height :100vh
+}
+
+#lessons{
+  display: flex;
+}
+
+h4{
+  text-align: center;
+}

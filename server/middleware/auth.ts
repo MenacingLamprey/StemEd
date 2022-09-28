@@ -19,7 +19,7 @@ export const authMiddleware = async (req : RequestWithUser, res :Response, next 
     // verify & decode token payload,
     const { _id } = jwt.verify(token, SECRET_KEY);
     // attempt to find user object and set to req
-    const user = await User.findOne({ _id });
+    const user = await User.findOne({ _id }).populate('completedLessons');
     if (!user) return res.sendStatus(401);
     req.user = user;
 

@@ -2,7 +2,7 @@
 export const Video = (props : {link : string}) => {
 
   const { link } = props
-  console.log(link)
+  
   return  (<div className="video-responsive">
   <iframe
     width="400"

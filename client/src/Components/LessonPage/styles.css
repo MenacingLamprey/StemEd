@@ -3,10 +3,14 @@
   display : flex;
   flex-direction: column;
   justify-content: space-around;
-  align-self: center;
   background: linear-gradient(gray, lightgray);
   min-height: 100vh;
-  width: 80%;
+  min-width: 100vw;
+}
+
+#summary{
+  width:75%;
+  align-self:center
 }
 
 #latex{
@@ -29,4 +33,5 @@
   align-self: center;
   width: fit-content;
   text-decoration: none;
+  padding:50px;
 }

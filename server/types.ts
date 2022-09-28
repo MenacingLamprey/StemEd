@@ -24,6 +24,7 @@ export interface ILesson {
   videoUrls : string[];
   exercises : IExercise[];
   exerciseformats : IExercise[];
+  background : string
   _id? : string;
 }
 

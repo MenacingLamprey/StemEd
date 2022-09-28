@@ -12,6 +12,16 @@ export const getLesson =  async (req : Request, res : Response) => {
   }
 }
 
+export const getLessonbyId =  async (req : Request, res : Response) => {
+  try {
+    const id = req.params.id;
+    const lesson = await Lesson.findById(id)
+    res.status(200).send(lesson)
+  } catch (e) {
+    res.status(500).send({error :e})
+  }
+}
+
 export const makeLesson =  async (req : Request, res : Response) => {
   try {
     const newLesson : ILesson = req.body;
