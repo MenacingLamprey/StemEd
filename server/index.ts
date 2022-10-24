@@ -4,19 +4,19 @@ import express from 'express';
 import mongoose from 'mongoose'
 import { join } from 'path';
 
-const cors = require('cors')
+import router from './router'
+
+import cors from 'cors'
 
 const corsConfig = {
   origin: 'http://localhost:3000',
   credentials: true,
 };
 
-import router from './router'
-
 const models = join(__dirname, './models');
 
 dotenv.config({
-  path: '.env'
+  path: join(__dirname,'.env')
 });
 
 fs.readdirSync(models) //makes sure all models are syncd
@@ -25,6 +25,7 @@ fs.readdirSync(models) //makes sure all models are syncd
 
 const PORT = process.env.PORT || 3001;
 const DB_URI = process.env.DB_URI || ''
+
 const app = express();
 
 app.use(cors(corsConfig))

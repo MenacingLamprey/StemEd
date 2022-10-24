@@ -34,7 +34,7 @@ export const Profile = () => {
       }
     };
 
-    accessToken  && getProfile(accessToken);
+    accessToken && getProfile(accessToken);
     
   }, []);
   return (

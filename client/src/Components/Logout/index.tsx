@@ -10,19 +10,17 @@ interface IProps {
   setIsAuthenticated : Function;
 }
 
-export const Logout :FunctionComponent<IProps> = (props) => {
+export const Logout :FunctionComponent<IProps> = ({ setIsAuthenticated }) => {
   let navigate = useNavigate();
   const handleClick = () => {
     removeToken();
     handleAuth();
   };
 
-  const removeToken = () => {
-    logout('accessToken');
-  };
+  const removeToken = () => logout('accessToken');
 
   const handleAuth = () => {
-    props.setIsAuthenticated(false);
+    setIsAuthenticated(false);
     Auth.logout(() => navigate('/'));
   };
 

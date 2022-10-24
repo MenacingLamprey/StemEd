@@ -12,8 +12,6 @@ import { Auth } from './utils/Auth';
 import { Logout } from "./Components/Logout";
 import { Login } from "./Components/Login";
 
-
-
 import './App.css';
 
 function App() {
@@ -32,7 +30,7 @@ function App() {
           <Route path="/exercises/:lesson/" element = {<ExercisePage />}/>
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Logout setIsAuthenticated={setIsAuthenticated}/>} />
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} isAuthenticated = {isAuthenticated}/>} />
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}/>} />
         </Routes>
       </BrowserRouter>

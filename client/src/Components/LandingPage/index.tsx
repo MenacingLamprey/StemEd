@@ -11,7 +11,7 @@ interface IProps {
  } 
 
 
-export const LandingPage :FunctionComponent<IProps>= ({isAuthenticated, setIsAuthenticated}) => {
+export const LandingPage :FunctionComponent<IProps>= ({ isAuthenticated, setIsAuthenticated }) => {
   const [subjects, setSubjects] = useState<ISubject[]>([initialSubject])
 
   useEffect(() =>{

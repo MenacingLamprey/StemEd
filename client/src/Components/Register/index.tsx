@@ -2,8 +2,7 @@ import { useState, FunctionComponent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Auth } from '../../utils/Auth';
-import { login, register } from '../../AuthApi';
-import { ILesson } from '../../ApiResponseTypes'; 
+import { register } from '../../AuthApi';
 
 import './styles.css'
 
@@ -19,7 +18,7 @@ export const Register :FunctionComponent<IProps> = ({ setIsAuthenticated }) => {
   const handleSubmit = async (e :FormEvent<HTMLFormElement>) => {
     // Check the client-session to see how to handle redirects
     e.preventDefault();
-    const user = { username, password ,completedLessons : []};
+    const user = { username, password ,completedLessons : [] };
     const res = await register(user);
 
     if (res.error) {

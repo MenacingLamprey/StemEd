@@ -9,5 +9,5 @@ const LessonSchema = new Schema({
   exerciseformats : [{type : Schema.Types.ObjectId, ref : 'exerciseFormat'}],
   background : String
 });
-
+  
 export const Lesson = model<ILesson>('lesson', LessonSchema);

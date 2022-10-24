@@ -13,4 +13,4 @@ const UserSchema = new Schema({
   completedLessons :[{type : Schema.Types.ObjectId, ref : 'lesson'}]
 });
 
-export const User = model<IUser>('user',UserSchema);
+export const User = model<IUser>('user', UserSchema);

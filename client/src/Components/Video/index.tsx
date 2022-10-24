@@ -1,4 +1,3 @@
-
 export const Video = (props : {link : string}) => {
 
   const { link } = props

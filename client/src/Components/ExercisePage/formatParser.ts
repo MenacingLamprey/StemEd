@@ -5,12 +5,10 @@ interface ITemplate {
   answers : string[];
   variables :string[];
   constants? :constant[];
-  symbols?: string[];
 } 
 
-
-export const formatParser =(template :ITemplate) : [string, string[]] => {
-  let {questionTemplate, answers, variables, constants, symbols } = template;
+export const formatParser = (template :ITemplate) : [string, string[]] => {
+  let { questionTemplate, answers, variables, constants } = template;
   for (const variable of variables){
     const rand = Math.floor(20*Math.random()+1)
     questionTemplate = questionTemplate.replaceAll(variable, rand.toString())

@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect, FormEventHandler, FormEvent } from "react";
-import {MathJax} from 'better-react-mathjax'
+import { useState, useEffect, FormEvent } from "react";
+import { MathJax } from 'better-react-mathjax'
 import { getExercisesByLesson, getExerciseFormatsByLesson, getLesson } from "../../ApiServices";
-import { IExercise, IExerciseFormat, ILesson } from "../../ApiResponseTypes"
+import { IExercise, ILesson } from "../../ApiResponseTypes"
 import { formatParser } from "./formatParser";
 
 import './styles.css'
@@ -20,6 +20,7 @@ export const ExercisePage  = () => {
 
   const { lesson } = useParams();
   const navigate = useNavigate();
+
   useEffect(() => {
     getExercises();
     getLessonData();
@@ -31,11 +32,10 @@ export const ExercisePage  = () => {
       const data = await getLesson(lesson)
       setLesson(data)
       } catch (e) {
-        return e
+        console.log(e)
       }
     }
   }
-
   
   const getExercises = async () => {
     if(lesson){
@@ -45,8 +45,8 @@ export const ExercisePage  = () => {
 
       while(formatedExercises.length < 3 && formats.length){
         for (const format of formats){ 
-          const [q,a] = (formatParser(format))
-          const newExercise = {question: q, answers: a ,_id:'1'} as IExercise
+          const [question, answers] = (formatParser(format))
+          const newExercise = {question, answers ,_id: '-1'} as IExercise
           formatedExercises.push(newExercise)
         }
       }
@@ -74,8 +74,8 @@ export const ExercisePage  = () => {
       setCorrect(false)
     }
   }
-
-  const generateInputs = () => { //used if there are multiple answers to a question
+  //used if there are multiple answers to a question
+  const generateInputs = () => {
     return (<div>
     {exercises[index].answers.map((answer,index) => <input 
       type="text" 
@@ -90,17 +90,19 @@ export const ExercisePage  = () => {
     </div>)
   }
 
+  //render user input in Latex
   const displayAnswerLaTex = () => {
+    //prevent carot from displaying error
     const valid = (answer : string) => {
       return (answer.slice(-1) !== '^')
     }
 
-
     return (<div>
       {answers.map(answer => 
-      <MathJax>{`\\(${valid(answer) ? answer: answer.slice(0,-1)}\\)`}</MathJax>)} {/*render user input in Latex*/}
-      </div>)
-}
+      <MathJax>{`\\(${valid(answer) ? answer: answer.slice(0,-1)}\\)`}</MathJax>)} 
+      </div>
+    )
+  }
 
   return (<div id ='exercise-container'> 
     {!exercises.length ? <div>Loading</div> :

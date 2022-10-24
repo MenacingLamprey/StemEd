@@ -11,8 +11,7 @@ import './styles.css'
 const initialLesson: ILesson = { title: '', videoUrls: [], summary: '', exercises: [],background :'' }
 
 export const LessonPage :FunctionComponent<{auth :boolean}> = ( {auth} ) => {
-  const [lesson, setLesson] = useState<ILesson>(initialLesson)
-
+  const [lesson, setLesson] = useState<ILesson>(initialLesson);
   const { title } = useParams();
 
   useEffect(() => {
@@ -25,13 +24,13 @@ export const LessonPage :FunctionComponent<{auth :boolean}> = ( {auth} ) => {
       const data = await getLesson(title)
       setLesson(data)
       } catch (e) {
-        return e
+        console.log(e);
       }
     }
   }
 
-  const parseSummary =(summary :string) => {
-    const splitSummary =  summary.split('<br>')
+  const parseSummary = (summary :string) => {
+    const splitSummary = summary.split('<br>')
     return splitSummary.map(section => <p>{section}</p>)
   }
 

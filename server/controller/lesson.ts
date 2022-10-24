@@ -1,6 +1,5 @@
 import { Request, Response} from "express";
 import { Lesson } from '../models/Lesson'
-import { ILesson } from '../types'
 
 export const getLesson =  async (req : Request, res : Response) => {
   try {
@@ -8,27 +7,36 @@ export const getLesson =  async (req : Request, res : Response) => {
     const lesson = await Lesson.findOne({title}).populate('exercises');
     res.status(200).send(lesson)
   } catch (e) {
-    res.status(500).send({error :e})
+    res.status(500).send({error : true , res : 'Error getting lesson'})
   }
 }
 
 export const getLessonbyId =  async (req : Request, res : Response) => {
   try {
-    const id = req.params.id;
-    const lesson = await Lesson.findById(id)
-    res.status(200).send(lesson)
+    const { id } = req.params;
+    const lesson = await Lesson.findById(id);
+    res.status(200).send(lesson);
   } catch (e) {
-    res.status(500).send({error :e})
+    res.status(500).send({error :true, res :'Error getting lesson'});
   }
 }
 
-export const makeLesson =  async (req : Request, res : Response) => {
+export const makeLesson = async (req : Request, res : Response) => {
   try {
-    const newLesson : ILesson = req.body;
+    const { newLesson }  = req.body;
     const lesson = await Lesson.create(newLesson);
     res.status(201).send(lesson)
   } catch (e) {
-    res.status(500).send({error :e})
+    res.status(500).send({error : true, res :'Error making lesson'})
   }
 }
 
+export const addExerciseToLesson = async (req : Request, res :Response) => {
+  try {
+  const { exerciseId, lessonId } = req.body
+  const lesson = await Lesson.updateOne({_id : lessonId}, { $push: {exercises : exerciseId } })
+  res.status(201).send({error : false, res : "Exercise added successfully" })
+  } catch (e) {
+    res.status(500).send({error :true, res : "Error adding exercise to lesson"})
+  }
+}

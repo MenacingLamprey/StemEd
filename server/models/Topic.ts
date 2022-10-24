@@ -6,7 +6,7 @@ const TopicSchema = new Schema({
   lessons : [{type : Schema.Types.ObjectId, ref : 'lesson'}],
   topicDescription : { type: String, required: true },
   topicExam : [{type : Schema.Types.ObjectId, ref : 'exercise'}],
-  backgound : { type: String, required: true },
+  background : { type: String, required: true },
 });
 
 export const Topic = model<ITopic>('topic',TopicSchema);

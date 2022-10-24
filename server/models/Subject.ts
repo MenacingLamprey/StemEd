@@ -6,4 +6,4 @@ const SubjectSchema = new Schema({
   topics : [{type : Schema.Types.ObjectId, ref : 'topic'}]
 });
 
-export const Subject =  model<ISubject>('subject',SubjectSchema);
+export const Subject =  model<ISubject>('subject',SubjectSchema); 

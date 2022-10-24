@@ -1,18 +1,16 @@
-import { useState, FunctionComponent, FormEvent, ChangeEvent } from 'react';
+import { useState, FunctionComponent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Auth }from '../../utils/Auth';
 import { login  } from './../../AuthApi';
-import { ILesson, ILoginUser } from '../../ApiResponseTypes';
 
 import './styles.css'
 
 interface IProps {
-  isAuthenticated : boolean;
   setIsAuthenticated : Function
 }
 
-export const Login :FunctionComponent<IProps> = ({isAuthenticated ,setIsAuthenticated}) => {
+export const Login :FunctionComponent<IProps> = ({ setIsAuthenticated}) => {
 
   let navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -21,9 +19,7 @@ export const Login :FunctionComponent<IProps> = ({isAuthenticated ,setIsAuthenti
   const handleSubmit = async (e :FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = { username, password };
-    console.log(user)
     const res = await login(user);
-    console.log(res)
 
     if (res.error) {
       alert(`${res.message}`);

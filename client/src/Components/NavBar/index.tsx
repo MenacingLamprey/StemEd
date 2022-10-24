@@ -19,7 +19,7 @@ export const NavBar :FunctionComponent<IProps> = ({isAuthenticated}) => {
       <div>
         <Link to={'/profile'} id ='link'>Profile</Link>
         <Link to={'/logout'} id ='link'>Logout</Link>
-      </div>:
+      </div> :
       <div>
         <Link to={'/login'} id ='link'>Login</Link>
         <Link to={'/register'} id ='link'>Register</Link>

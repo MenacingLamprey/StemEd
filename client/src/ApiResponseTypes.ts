@@ -24,7 +24,7 @@ export interface ILesson {
   videoUrls :string[];
   exercises : IExercise[];
   exerciseFormats? : IExerciseFormat[];
-  background :string
+  background :string;
 }
 
 export interface ITopic {
@@ -43,14 +43,14 @@ export interface ISubject {
 }
 
 export interface IUser{
-  username :string,
-  password:string,
-  completedLessons: ILesson[]
+  username :string;
+  password:string;
+  completedLessons: ILesson[];
 }
 
 export interface ILoginUser{
-  username :string,
-  password:string,
+  username :string;
+  password:string;
 }
 
 export interface IAuth {

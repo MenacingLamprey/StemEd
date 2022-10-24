@@ -1,5 +1,10 @@
 {
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.12",
+    "@types/jsonwebtoken": "^8.5.9",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
     "react-router-dom": "^6.4.1"
   }
 }

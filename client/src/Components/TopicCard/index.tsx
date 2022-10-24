@@ -8,6 +8,7 @@ interface IProps {
 } 
 
 export const TopicCard : FunctionComponent<IProps> = ({ topic }) => {
+
   return (<div> 
     <h4 id = 'title'>{topic.title}</h4>
     <Link id ='topic-link' to={`/topic/${topic.title}`}>
