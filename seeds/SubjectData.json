@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "63540e9e4927ac684d320da6"
+  },
+  "title": "Math",
+  "topics": [
+    {
+      "$oid": "63540e055a9d3b3cb6acbc66"
+    },
+    {
+      "$oid": "63541d4a8bb9c32a2e053b48"
+    },
+    {
+      "$oid": "63541d8c8bb9c32a2e053b49"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63541caf8bb9c32a2e053b47"
+  },
+  "title": "Science",
+  "topics": [
+    {
+      "$oid": "63541e2c8bb9c32a2e053b4b"
+    },
+    {
+      "$oid": "63541e778bb9c32a2e053b4c"
+    },
+    {
+      "$oid": "63541ded8bb9c32a2e053b4a"
+    }
+  ],
+  "__v": 0
+}]

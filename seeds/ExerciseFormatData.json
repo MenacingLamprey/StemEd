@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "6356a6a159e802bb06995378"
+  },
+  "__v": 0,
+  "answers": [
+    "var1"
+  ],
+  "constants": [
+    ""
+  ],
+  "variables": [
+    "var1",
+    "var2"
+  ],
+  "questionTemplate": "What is the slope in the linear equation? \\(y = var1x +var2\\)"
+},{
+  "_id": {
+    "$oid": "6356af0859e802bb06995379"
+  },
+  "__v": 0,
+  "answers": [
+    "0",
+    "-var2/var1"
+  ],
+  "constants": [
+    ""
+  ],
+  "variables": [
+    "var1",
+    "var2"
+  ],
+  "questionTemplate": "What are the roots of the quadratic? \\(var1x^2 +var2x\\)"
+},{
+  "_id": {
+    "$oid": "6356af5c59e802bb0699537a"
+  },
+  "__v": 0,
+  "answers": [
+    "Math.sqrt(-var2/var1)",
+    "-Math.sqrt(-var2/var1)"
+  ],
+  "constants": [
+    ""
+  ],
+  "variables": [
+    "var1",
+    "var2"
+  ],
+  "questionTemplate": "What are the roots of the quadratic? \\(var1x^2 +var2 \\)"
+},{
+  "_id": {
+    "$oid": "6356af9059e802bb0699537b"
+  },
+  "__v": 0,
+  "answers": [
+    "var1",
+    "-var2"
+  ],
+  "constants": [
+    ""
+  ],
+  "variables": [
+    "var1",
+    "var2"
+  ],
+  "questionTemplate": "What are the roots of the quadratic? \\(x-var1)(x+var2) \\)"
+},{
+  "_id": {
+    "$oid": "635841afadd72266db091741"
+  },
+  "__v": 0,
+  "answers": [
+    "2*var1*x + var2"
+  ],
+  "constants": [
+    ""
+  ],
+  "variables": [
+    "var1",
+    "var2"
+  ],
+  "questionTemplate": "What is the derivative of the equation var1x^2 +var2x+var3"
+}]

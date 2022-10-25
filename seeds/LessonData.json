@@ -1,0 +1,140 @@
+[{
+  "_id": {
+    "$oid": "635408f8567ef058b206a768"
+  },
+  "title": "Finding the slope of linear equations",
+  "summary": "Linear equations are written in the standard form \\(y = mx + b\\) Where \\(b\\) is the \\(y\\)-intercept of the equation and \\(m\\) is the slope, which is how much y changes with a change in x.\n\nIn this form, solving for the slope is a simple matter, it's simply \\(m\\). For example, if  \\(y=7x+3\\), then the slope (\\(m\\)) is simply 7. However we may receive the equation in a different form however, such as \\(8x+4y=12\\), in which case it's usually best to transform the equation back in to standard form and find \\(m\\) directly.\n\\[ 8x + 4y =12 \\rightarrow 4y = 12-8x \\rightarrow y = 3-2x\\]\nso /(m = 2/)\n\nAdditionally, instead of an equation, we may simply recieve two points, \\((x_1, y_1),(x_2,y_2)\\) and be asked to find the slope between them. In this case, we find the \"rise over run\" which is the difference in the \\(y-values\\) divided by the difference in the \\(x-values\\) \\[ m = \\frac{y_2-y_1}{x_2-x_1} \\]. i.e. for the two points \\((0, 6),(2,10)\\) then \\((x_1 = 0, y_1= 6),(x_2 = 2,y_2 = 10)\\), so \\[m = \\frac{10-6}{2-0} =\\frac{4}{2} = 2\\]",
+  "videoUrls": [
+    "RZAMCkaw8Nw"
+  ],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "exerciseformats": [
+    {
+      "$oid": "6356a6a159e802bb06995378"
+    }
+  ],
+  "background": "/linear-slope.jpeg"
+},{
+  "_id": {
+    "$oid": "635421078bb9c32a2e053b4d"
+  },
+  "title": "Finding the slope of a polynomial",
+  "summary": "Polynomials are written in the form \\[y = a_0 x^n + a_1 x^{n-1} +.... +a_{n-1} x + a_n\\] The power rule states the derivative of a monomial is \\[\\frac{d}{dx}x^n = nx^{n-1} \\] The superposition rules tells us that the derivative of the sum of terms is equal to the sum of the derivates, i.e. \\[\\frac{d}{dx} (f(x)+g(x)] = f'(x) + g'(x) \\] putting together these facts together, we can find the derivative of any polynomial",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "background": "/poly-deriv.png",
+  "exerciseFormats": [
+    ""
+  ]
+},{
+  "_id": {
+    "$oid": "635421bc8bb9c32a2e053b4e"
+  },
+  "title": "Derivatives using the chain rule",
+  "summary": "Equations of the form \\[y = a_0 x^n + a_1 x^{n-1} +.... +a_{n-1} x + a_n\\]",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "exerciseformats": [],
+  "background": "/quadratic-roots.jpeg"
+},{
+  "_id": {
+    "$oid": "635429a88bb9c32a2e053b4f"
+  },
+  "title": "Solving exponential equations",
+  "summary": "Exponential equations of the form \\[y = a_0 x^n + a_1 x^{n-1} +.... +a_{n-1} x + a_n\\]",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "exerciseformats": [],
+  "background": "/exponential-alg.png"
+},{
+  "_id": {
+    "$oid": "6354433640318465f194606c"
+  },
+  "title": "Finding Quadratic roots",
+  "summary": "A quardratic has the form \\[(1) y = ax^2 + b x + c\\], where /(a>0/). A quardratic function can 0,1, or 2 y-intercepts, also known as roots.  \n We can find the roots by setting the function equal to 0 and solving for x. When \\(b =0\\) and \\(c\\ =0) the equation becomes \\(ax^2 =0\\) which has only the trivial solution, \\(x=0\\)\n \n In the case /(c=0/) the equation becomes \\[y = ax^2 + b x = 0 \\rightarrow (ax+b)(x) = 0 \\rightarrow x=0, x = -b/a \\]\n\nWhen \\(b=0\\) the equation becomes \\[y = ax^2 + c = 0 \\rightarrow (x^2) = -c/a \\rightarrow x=\\pm \\sqrt{-c/a} \\] Which will yield two real solutions if \\(\\frac{-c}{a} > 0\\), otherwise, both solutions would be imaginary.\n\nFinally, if all terms are non-zero the solution becomes less trivial. The first method used is usually factoring. If we have a quadratic written in the form \\((x-a)(x-b)\\) we can see that the roots are simply \\((x=a)(x=b)\\). If we distribute this equation, we get \\(x^2-(b+a)x+ba)\\). Using this as a template, we can go backwards. for example \\[x^2+2x-8\\] \\rightarrow a*b = 8, b+a = -2\\)\n\nSolving the system of linear equations, we can see that \\(b=-4\\) and \\(a=2\\) , which are the roots of the equation\n\nIf factoring proves difficult, the quadratic equation is a full proof, if not somewhat cumbersome, method to solve for quadratic roots\n\\[\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a} \\]\nWhere we simply plug in the coeffecients from eq 1 and we'll recieve the roots of the function",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6356b31659e802bb0699537c"
+    },
+    {
+      "$oid": "6356b39e59e802bb0699537d"
+    }
+  ],
+  "background": "/quadratic-roots.jpeg",
+  "exerciseFormats": [
+    ""
+  ]
+},{
+  "_id": {
+    "$oid": "6354453540318465f194606d"
+  },
+  "title": "Solving for angles with inverse functions",
+  "summary": "In order find the angle of elevtion \\[y = ax^2 + b x + c\\]",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "exerciseformats": [],
+  "background": "/inverse-trig.png"
+},{
+  "_id": {
+    "$oid": "6354476540318465f194606e"
+  },
+  "title": "Electro static forces from point charges",
+  "summary": "In order find the angle of elevtion \\[y = ax^2 + b x + c\\]",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "exerciseformats": [],
+  "background": "/2body.png"
+},{
+  "_id": {
+    "$oid": "6354488c40318465f194606f"
+  },
+  "title": "One dimensional kinematics",
+  "summary": "A body under going a constant force \\[y = ax^2 + b x + c\\]",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "exerciseformats": [],
+  "background": "/kinematics.png"
+},{
+  "_id": {
+    "$oid": "63544b6940318465f1946070"
+  },
+  "title": "One dimensional Schrödingers equation",
+  "summary": "A body under going a constant force \\[y = ax^2 + b x + c\\]",
+  "videoUrls": [],
+  "exercises": [
+    {
+      "$oid": "6354076db08ee2d00b091c13"
+    }
+  ],
+  "exerciseformats": [],
+  "background": "/1dschrod.png"
+}]

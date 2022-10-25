@@ -1,0 +1,94 @@
+[{
+  "_id": {
+    "$oid": "63540e055a9d3b3cb6acbc66"
+  },
+  "title": "Algebra",
+  "lessons": [
+    {
+      "$oid": "635408f8567ef058b206a768"
+    },
+    {
+      "$oid": "6354433640318465f194606c"
+    },
+    {
+      "$oid": "635429a88bb9c32a2e053b4f"
+    }
+  ],
+  "topicDescription": "Algebra is the study of mathematical symbols and the rules for manipulating these symbols in formulas",
+  "topicExam": [],
+  "background": "Algebra.jpeg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63541d4a8bb9c32a2e053b48"
+  },
+  "title": "Calculus",
+  "lessons": [
+    {
+      "$oid": "635421bc8bb9c32a2e053b4e"
+    },
+    {
+      "$oid": "635421078bb9c32a2e053b4d"
+    }
+  ],
+  "topicDescription": "Calcus is the study of...",
+  "topicExam": [],
+  "background": "calc.jpeg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63541d8c8bb9c32a2e053b49"
+  },
+  "title": "Trigonometry",
+  "lessons": [
+    {
+      "$oid": "6354453540318465f194606d"
+    }
+  ],
+  "topicDescription": "Trigonometry is the study of...",
+  "topicExam": [],
+  "background": "trig.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63541ded8bb9c32a2e053b4a"
+  },
+  "title": "Algebra Based Mechanics",
+  "lessons": [
+    {
+      "$oid": "6354488c40318465f194606f"
+    }
+  ],
+  "topicDescription": "Physics is the study of",
+  "topicExam": [],
+  "background": "alg-physics.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63541e2c8bb9c32a2e053b4b"
+  },
+  "title": "Electrostatics",
+  "lessons": [
+    {
+      "$oid": "6354476540318465f194606e"
+    }
+  ],
+  "topicDescription": "Two charged particles will",
+  "topicExam": [],
+  "background": "electrostatic.jpeg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63541e778bb9c32a2e053b4c"
+  },
+  "title": "Quantum Mechanics",
+  "lessons": [
+    {
+      "$oid": "63544b6940318465f1946070"
+    }
+  ],
+  "topicDescription": "On the scale we interact with daily",
+  "topicExam": [],
+  "background": "quantum.jpeg",
+  "__v": 0
+}]

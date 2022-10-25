@@ -1,0 +1,13 @@
+[{
+  "question": "What is the slope in the linear equation? \\(y = 7x +3\\)",
+  "answers": [
+    "7"
+  ]
+},{
+  "_id": {
+  "question": "What is the sole root of the equation? \\(x^2 -2x +1\\)",
+  "answers": [
+    "1"
+  ]
+  }
+}]
